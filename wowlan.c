@@ -388,7 +388,7 @@ static int print_wowlan_handler(struct nl_msg *msg, void *arg)
 		int rem_match;
 
 		printf(" * wake up on network detection\n");
-		nla_parse(nd, NUM_NL80211_ATTR,
+		nla_parse(nd, NL80211_ATTR_MAX,
 			  nla_data(trig[NL80211_WOWLAN_TRIG_NET_DETECT]),
 			  nla_len(trig[NL80211_WOWLAN_TRIG_NET_DETECT]), NULL);
 
@@ -405,7 +405,7 @@ static int print_wowlan_handler(struct nl_msg *msg, void *arg)
 			nla_for_each_nested(match,
 					    nd[NL80211_ATTR_SCHED_SCAN_MATCH],
 					    rem_match) {
-				nla_parse(tb, NUM_NL80211_ATTR, nla_data(match),
+				nla_parse(tb, NL80211_ATTR_MAX, nla_data(match),
 					  nla_len(match),
 					  NULL);
 				printf("\t\tSSID: ");
